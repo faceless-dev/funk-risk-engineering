@@ -3,7 +3,35 @@
 @tailwind utilities;
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  @apply text-[16px] font-normal font-noto-sans leading-[1.55];
+  color: #333333
+}
+
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-VariableFont_wdth,wght.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: url("/fonts/NotoSerif-VariableFont_wdth,wght.ttf") format("opentype");
+}
+
+h1 {
+  @apply text-[29px] font-normal font-noto-serif text-endeavour-blue;
+}
+
+h2 {
+  @apply text-[21px] font-normal font-noto-serif text-endeavour-blue;
+}
+
+h3 {
+  @apply text-[16px] font-[800] font-noto-sans text-endeavour-blue;
+}
+
+h4 {
+  @apply text-[13px] font-normal font-noto-sans;
+  color: #999999;
 }
 
 @layer utilities {
@@ -47,22 +75,6 @@ body {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --p-endeavour-blue: 211 100% 29%;
-    --p-lima-green: 104 77% 44%;
-    --p-chelsea-green: 79 56% 50%;
-    --s-schrift: 60, 1%, 23%;
-    --s-tradewind: 171, 42%, 58%;
-    --s-blue-chill: 180, 82%, 33%;
-    --s-eucalyptus: 159, 46%, 32%;
-    --s-blue-lagoon: 191, 100%, 25%;
-    --s-wedgewood: 206, 33%, 49%;
-    --s-Havelock-blue: 209, 60%, 61%;
-    --s-donkey-brown: 33, 20%, 58%;
-    --s-medium-red-violet: 322, 53%, 49%;
-    --s-lipstick: 330, 100%, 34%;
-    --s-gray: 0, 0%, 50%;
-    --s-silver: 0, 0%, 75%;
-
   }
   .dark {
     --background: 0 0% 3.9%;
