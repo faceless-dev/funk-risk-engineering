@@ -17,23 +17,6 @@ body {
   src: url("/fonts/NotoSerif-VariableFont_wdth,wght.ttf") format("opentype");
 }
 
-h1 {
-  @apply text-[29px] font-normal font-noto-serif text-endeavour-blue;
-}
-
-h2 {
-  @apply text-[21px] font-normal font-noto-serif text-endeavour-blue;
-}
-
-h3 {
-  @apply text-[16px] font-[800] font-noto-sans text-endeavour-blue;
-}
-
-h4 {
-  @apply text-[13px] font-normal font-noto-sans;
-  color: #999999;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -40,6 +40,7 @@
     "@radix-ui/react-tooltip": "^1.1.6",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
+    "classnames": "^2.5.1",
     "clsx": "^2.1.1",
     "cmdk": "1.0.4",
     "date-fns": "^2.29.3",
