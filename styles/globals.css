@@ -43,29 +43,29 @@ h4 {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 0 0% 20%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
+    --primary: 211 100% 29%;
     --primary-foreground: 0 0% 98%;
     --secondary: 0 0% 96.1%;
     --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
+    --accent: 104 77% 44%;
     --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 330, 100%, 34%;
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 171, 42%, 58%;
+    --chart-2: 180, 82%, 33%;
+    --chart-3: 191, 100%, 25%;
+    --chart-4: 206, 33%, 49%;
+    --chart-5: 209, 60%, 61%;
     --radius: 0.5rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -75,21 +75,8 @@ h4 {
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-    --p-endeavour-blue: 211 100% 29%;
-    --p-lima-green: 104 77% 44%;
-    --p-chelsea-green: 79 56% 50%;
-    --s-schrift: 60, 1%, 23%;
-    --s-tradewind: 171, 42%, 58%;
-    --s-blue-chill: 180, 82%, 33%;
-    --s-eucalyptus: 159, 46%, 32%;
-    --s-blue-lagoon: 191, 100%, 25%;
-    --s-wedgewood: 206, 33%, 49%;
-    --s-havelock-blue: 209, 60%, 61%;
-    --s-donkey-brown: 33, 20%, 58%;
-    --s-medium-red-violet: 322, 53%, 49%;
-    --s-lipstick: 330, 100%, 34%;
-    --s-gray: 0, 0%, 50%;
-    --s-silver: 0, 0%, 75%;
+    --success: 79 56% 50%;
+    --warning: 43, 67%, 47%;
   }
   .dark {
     --background: 0 0% 3.9%;
