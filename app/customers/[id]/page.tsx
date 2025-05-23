@@ -1,6 +1,5 @@
-import CustomerDetail from "./customer-detail"
+import CustomerDetail from './customer-detail';
 
 export default function CustomerDetailPage({ params }: { params: { id: string } }) {
-  return <CustomerDetail id={params.id} />
+    return <CustomerDetail id={params.id} />;
 }
-

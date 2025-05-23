@@ -1,18 +1,18 @@
 export default {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    domains: ["images.unsplash.com"],
-  },
-  experimental: {
-    reactCompiler: true,
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
-  },
-  reactStrictMode: true,
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
+    experimental: {
+        parallelServerBuildTraces: true,
+        parallelServerCompiles: true,
+        reactCompiler: true,
+        webpackBuildWorker: true,
+    },
+    images: {
+        domains: ['images.unsplash.com'],
+    },
+    reactStrictMode: true,
+    typescript: {
+        ignoreBuildErrors: true,
+    },
 };

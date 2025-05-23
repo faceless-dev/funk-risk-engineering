@@ -1,91 +1,90 @@
 export interface Customer {
-  id: string
-  customerNumber: string
-  name: string
-  group: string
-  email: string
-  phone: string
-  locations: number
-  cases: number
-  openMeasures: number
-  color: "red" | "green" | "blue"
+    cases: number;
+    color: 'red' | 'green' | 'blue';
+    customerNumber: string;
+    email: string;
+    group: string;
+    id: string;
+    locations: number;
+    name: string;
+    openMeasures: number;
+    phone: string;
 }
 
 // Mock data for customers
 export const getCustomersData = (): Customer[] => {
-  return [
-    {
-      id: "acme",
-      customerNumber: "K-2023-001",
-      name: "Acme GmbH",
-      group: "Einzelhandel",
-      email: "kontakt@acmegmbh.com",
-      phone: "+43 1 234567890",
-      locations: 5,
-      cases: 3,
-      openMeasures: 2,
-      color: "blue",
-    },
-    {
-      id: "techstart",
-      customerNumber: "K-2023-002",
-      name: "TechStart AG",
-      group: "Technologie",
-      email: "info@techstart.com",
-      phone: "+43 662 9876543",
-      locations: 3,
-      cases: 3,
-      openMeasures: 1,
-      color: "blue",
-    },
-    {
-      id: "globale",
-      customerNumber: "K-2023-003",
-      name: "Globale Dienstleistungen GmbH",
-      group: "Dienstleistungen",
-      email: "support@globaledienstleistungen.com",
-      phone: "+43 512 1122334",
-      locations: 2,
-      cases: 2,
-      openMeasures: 0,
-      color: "green",
-    },
-    {
-      id: "innovative",
-      customerNumber: "K-2023-004",
-      name: "Innovative Systems GmbH",
-      group: "Software",
-      email: "office@innovative-systems.at",
-      phone: "+43 316 7788990",
-      locations: 1,
-      cases: 4,
-      openMeasures: 6,
-      color: "red",
-    },
-    {
-      id: "ecotech",
-      customerNumber: "K-2023-005",
-      name: "EcoTech Solutions",
-      group: "Umwelttechnologie",
-      email: "info@ecotech-solutions.at",
-      phone: "+43 732 5566778",
-      locations: 2,
-      cases: 2,
-      openMeasures: 4,
-      color: "blue",
-    },
-    {
-      id: "alphamedical",
-      customerNumber: "K-2023-006",
-      name: "Alpha Medical GmbH",
-      group: "Gesundheitswesen",
-      email: "kontakt@alpha-medical.at",
-      phone: "+43 662 3344556",
-      locations: 4,
-      cases: 1,
-      openMeasures: 1,
-      color: "blue",
-    },
-  ]
-}
-
+    return [
+        {
+            cases: 3,
+            color: 'blue',
+            customerNumber: 'K-2023-001',
+            email: 'kontakt@acmegmbh.com',
+            group: 'Einzelhandel',
+            id: 'acme',
+            locations: 5,
+            name: 'Acme GmbH',
+            openMeasures: 2,
+            phone: '+43 1 234567890',
+        },
+        {
+            cases: 3,
+            color: 'blue',
+            customerNumber: 'K-2023-002',
+            email: 'info@techstart.com',
+            group: 'Technologie',
+            id: 'techstart',
+            locations: 3,
+            name: 'TechStart AG',
+            openMeasures: 1,
+            phone: '+43 662 9876543',
+        },
+        {
+            cases: 2,
+            color: 'green',
+            customerNumber: 'K-2023-003',
+            email: 'support@globaledienstleistungen.com',
+            group: 'Dienstleistungen',
+            id: 'globale',
+            locations: 2,
+            name: 'Globale Dienstleistungen GmbH',
+            openMeasures: 0,
+            phone: '+43 512 1122334',
+        },
+        {
+            cases: 4,
+            color: 'red',
+            customerNumber: 'K-2023-004',
+            email: 'office@innovative-systems.at',
+            group: 'Software',
+            id: 'innovative',
+            locations: 1,
+            name: 'Innovative Systems GmbH',
+            openMeasures: 6,
+            phone: '+43 316 7788990',
+        },
+        {
+            cases: 2,
+            color: 'blue',
+            customerNumber: 'K-2023-005',
+            email: 'info@ecotech-solutions.at',
+            group: 'Umwelttechnologie',
+            id: 'ecotech',
+            locations: 2,
+            name: 'EcoTech Solutions',
+            openMeasures: 4,
+            phone: '+43 732 5566778',
+        },
+        {
+            cases: 1,
+            color: 'blue',
+            customerNumber: 'K-2023-006',
+            email: 'kontakt@alpha-medical.at',
+            group: 'Gesundheitswesen',
+            id: 'alphamedical',
+            locations: 4,
+            name: 'Alpha Medical GmbH',
+            openMeasures: 1,
+            phone: '+43 662 3344556',
+        },
+    ];
+};

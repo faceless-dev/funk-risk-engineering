@@ -22,13 +22,15 @@ A modern web application for risk assessment and management, built for FUNK.
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/your-username/funk-risk-tool.git
 cd funk-risk-tool
 
+```

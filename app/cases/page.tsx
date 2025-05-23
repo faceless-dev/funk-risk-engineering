@@ -1,6 +1,5 @@
-import Cases from "./cases"
+import Cases from './cases';
 
 export default function CasesPage() {
-  return <Cases />
+    return <Cases />;
 }
-

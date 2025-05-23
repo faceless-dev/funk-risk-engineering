@@ -1,14 +1,12 @@
-import LocationDetail from "./location-detail";
+import LocationDetail from './location-detail';
 
 export default function CustomerLocationPage({
-  params,
+    params,
 }: {
-  params: {
-    id: string;
-    locationId: string;
-  };
+    params: {
+        id: string;
+        locationId: string;
+    };
 }) {
-  return (
-    <LocationDetail customerId={params.id} locationId={params.locationId} />
-  );
+    return <LocationDetail customerId={params.id} locationId={params.locationId} />;
 }

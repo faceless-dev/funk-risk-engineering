@@ -1,78 +1,77 @@
 export interface ReportData {
-  id: string
-  name: string
-  customer: string
-  location: string
-  status: string
-  createdDate: string
-  lastUpdated: string
-  description: string
-  measures: Measure[]
+    createdDate: string;
+    customer: string;
+    description: string;
+    id: string;
+    lastUpdated: string;
+    location: string;
+    measures: Measure[];
+    name: string;
+    status: string;
 }
 
 export interface Measure {
-  id: number
-  title: string
-  priority: "High" | "Medium" | "Low"
-  status: "Open" | "In Progress" | "Completed"
-  deadline: string
-  description: string
+    deadline: string;
+    description: string;
+    id: number;
+    priority: 'High' | 'Medium' | 'Low';
+    status: 'Open' | 'In Progress' | 'Completed';
+    title: string;
 }
 
 // Mock data for the report
 export const getReportData = (id: string): ReportData => {
-  return {
-    id: id || "R-2023-001",
-    name: "Annual Risk Assessment",
-    customer: "Acme Corp",
-    location: "Vienna Headquarters",
-    status: "Open",
-    createdDate: "2023-04-01",
-    lastUpdated: "2023-04-10",
-    description:
-      "Annual risk assessment for Acme Corp's Vienna headquarters. This assessment covers fire safety, electrical systems, and emergency procedures.",
-    measures: [
-      {
-        id: 1,
-        title: "Fire Safety System Update",
-        priority: "High",
-        status: "Open",
-        deadline: "2023-04-15",
-        description: "Update fire alarm system to meet new regulations.",
-      },
-      {
-        id: 2,
-        title: "Emergency Exit Signage",
-        priority: "Medium",
-        status: "In Progress",
-        deadline: "2023-04-20",
-        description: "Install new emergency exit signs with LED lighting.",
-      },
-      {
-        id: 3,
-        title: "Electrical System Inspection",
-        priority: "High",
-        status: "Open",
-        deadline: "2023-04-25",
-        description: "Complete inspection of all electrical panels and wiring.",
-      },
-      {
-        id: 4,
-        title: "Staff Safety Training",
-        priority: "Medium",
-        status: "Completed",
-        deadline: "2023-03-30",
-        description: "Conduct safety training for all staff members.",
-      },
-      {
-        id: 5,
-        title: "Ventilation System Maintenance",
-        priority: "Low",
-        status: "Open",
-        deadline: "2023-05-10",
-        description: "Schedule maintenance for all HVAC systems.",
-      },
-    ],
-  }
-}
-
+    return {
+        createdDate: '2023-04-01',
+        customer: 'Acme Corp',
+        description:
+            "Annual risk assessment for Acme Corp's Vienna headquarters. This assessment covers fire safety, electrical systems, and emergency procedures.",
+        id: id || 'R-2023-001',
+        lastUpdated: '2023-04-10',
+        location: 'Vienna Headquarters',
+        measures: [
+            {
+                deadline: '2023-04-15',
+                description: 'Update fire alarm system to meet new regulations.',
+                id: 1,
+                priority: 'High',
+                status: 'Open',
+                title: 'Fire Safety System Update',
+            },
+            {
+                deadline: '2023-04-20',
+                description: 'Install new emergency exit signs with LED lighting.',
+                id: 2,
+                priority: 'Medium',
+                status: 'In Progress',
+                title: 'Emergency Exit Signage',
+            },
+            {
+                deadline: '2023-04-25',
+                description: 'Complete inspection of all electrical panels and wiring.',
+                id: 3,
+                priority: 'High',
+                status: 'Open',
+                title: 'Electrical System Inspection',
+            },
+            {
+                deadline: '2023-03-30',
+                description: 'Conduct safety training for all staff members.',
+                id: 4,
+                priority: 'Medium',
+                status: 'Completed',
+                title: 'Staff Safety Training',
+            },
+            {
+                deadline: '2023-05-10',
+                description: 'Schedule maintenance for all HVAC systems.',
+                id: 5,
+                priority: 'Low',
+                status: 'Open',
+                title: 'Ventilation System Maintenance',
+            },
+        ],
+        name: 'Annual Risk Assessment',
+        status: 'Open',
+    };
+};
