@@ -1,141 +1,139 @@
-import { Plus } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { FileText } from "lucide-react"
-import type { Measure } from "../data/case-data"
-import Link from "next/link"
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { FileText, Plus } from 'lucide-react';
+import Link from 'next/link';
+import type { Measure } from '../data/case-data';
 
 interface MeasuresTabProps {
-  measures: Measure[]
+    measures: Measure[];
 }
 
 export function MeasuresTab({ measures }: MeasuresTabProps) {
-  return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between">
-        <div>
-          <CardTitle>Measures</CardTitle>
-          <CardDescription>List of all measures for this case</CardDescription>
-        </div>
-        <Button className="gap-2">
-          <Plus className="h-4 w-4" />
-          Add Measure
-        </Button>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {measures.map((measure) => (
-            <div key={measure.id} className="rounded-lg border p-4">
-              <div className="flex items-start justify-between">
+    return (
+        <Card>
+            <CardHeader className="flex flex-row items-center justify-between">
                 <div>
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-medium">
-                      <Link href={`/cases/${measure.id}/measures/${measure.id}`} className="hover:underline">
-                        {measure.title}
-                      </Link>
-                    </h3>
-                    <Badge
-                      className={
-                        measure.priority === "High"
-                          ? "bg-red-100 text-red-800 hover:bg-red-100"
-                          : measure.priority === "Medium"
-                            ? "bg-yellow-100 text-yellow-800 hover:bg-yellow-100"
-                            : "bg-green-100 text-green-800 hover:bg-green-100"
-                      }
-                    >
-                      {measure.priority}
-                    </Badge>
-                    <Badge
-                      className={
-                        measure.status === "Open"
-                          ? "bg-blue-100 text-blue-800 hover:bg-blue-100"
-                          : measure.status === "In Progress"
-                            ? "bg-purple-100 text-purple-800 hover:bg-purple-100"
-                            : "bg-green-100 text-green-800 hover:bg-green-100"
-                      }
-                    >
-                      {measure.status}
-                    </Badge>
-                    {measure.attachments.length > 0 && (
-                      <Badge variant="outline" className="gap-1">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          className="h-3 w-3"
-                        >
-                          <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
-                        </svg>
-                        {measure.attachments.length} {measure.attachments.length === 1 ? "attachment" : "attachments"}
-                      </Badge>
-                    )}
-                  </div>
-                  <p className="mt-1 text-sm text-muted-foreground">Deadline: {measure.deadline}</p>
+                    <CardTitle>Measures</CardTitle>
+                    <CardDescription>List of all measures for this case</CardDescription>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="gap-1">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="h-4 w-4"
-                    >
-                      <path d="M12 20h9" />
-                      <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                    </svg>
-                    Edit
-                  </Button>
+                <Button className="gap-2">
+                    <Plus className="h-4 w-4" />
+                    Add Measure
+                </Button>
+            </CardHeader>
+            <CardContent>
+                <div className="space-y-4">
+                    {measures.map((measure) => (
+                        <div key={measure.id} className="rounded-lg border p-4">
+                            <div className="flex items-start justify-between">
+                                <div>
+                                    <div className="flex items-center gap-2">
+                                        <h3 className="font-medium">
+                                            <Link className="hover:underline" href={`/cases/${measure.id}/measures/${measure.id}`}>
+                                                {measure.title}
+                                            </Link>
+                                        </h3>
+                                        <Badge
+                                            className={
+                                                measure.priority === 'High'
+                                                    ? 'bg-red-100 text-red-800 hover:bg-red-100'
+                                                    : measure.priority === 'Medium'
+                                                      ? 'bg-yellow-100 text-yellow-800 hover:bg-yellow-100'
+                                                      : 'bg-green-100 text-green-800 hover:bg-green-100'
+                                            }
+                                        >
+                                            {measure.priority}
+                                        </Badge>
+                                        <Badge
+                                            className={
+                                                measure.status === 'Open'
+                                                    ? 'bg-blue-100 text-blue-800 hover:bg-blue-100'
+                                                    : measure.status === 'In Progress'
+                                                      ? 'bg-purple-100 text-purple-800 hover:bg-purple-100'
+                                                      : 'bg-green-100 text-green-800 hover:bg-green-100'
+                                            }
+                                        >
+                                            {measure.status}
+                                        </Badge>
+                                        {measure.attachments.length > 0 && (
+                                            <Badge className="gap-1" variant="outline">
+                                                <svg
+                                                    className="h-3 w-3"
+                                                    fill="none"
+                                                    stroke="currentColor"
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth="2"
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                                                </svg>
+                                                {measure.attachments.length} {measure.attachments.length === 1 ? 'attachment' : 'attachments'}
+                                            </Badge>
+                                        )}
+                                    </div>
+                                    <p className="mt-1 text-sm text-muted-foreground">Deadline: {measure.deadline}</p>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <Button className="gap-1" size="sm" variant="outline">
+                                        <svg
+                                            className="h-4 w-4"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth="2"
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path d="M12 20h9" />
+                                            <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
+                                        </svg>
+                                        Edit
+                                    </Button>
+                                </div>
+                            </div>
+                            <Separator className="my-2" />
+                            <p className="text-sm">{measure.description}</p>
+
+                            {measure.attachments.length > 0 && (
+                                <>
+                                    <Separator className="my-2" />
+                                    <div className="mt-2">
+                                        <h4 className="text-sm font-medium">Attachments:</h4>
+                                        <div className="mt-2 flex flex-wrap gap-2">
+                                            {measure.attachments.map((file, index) => (
+                                                <Badge key={index} className="gap-1" variant="outline">
+                                                    <FileText className="h-3 w-3" />
+                                                    {file.name}
+                                                    <span className="text-xs text-muted-foreground ml-1">({file.size})</span>
+                                                </Badge>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </>
+                            )}
+
+                            {measure.status !== 'Open' && (
+                                <>
+                                    <Separator className="my-2" />
+                                    <div className="mt-2">
+                                        <h4 className="text-sm font-medium">Customer Response:</h4>
+                                        <p className="text-sm text-muted-foreground">
+                                            {measure.status === 'Completed'
+                                                ? 'We have completed the required safety training for all staff members. Attendance records and training materials are attached.'
+                                                : 'We are currently in the process of installing the new emergency exit signs. Expected completion by April 18th.'}
+                                        </p>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                    ))}
                 </div>
-              </div>
-              <Separator className="my-2" />
-              <p className="text-sm">{measure.description}</p>
-
-              {measure.attachments.length > 0 && (
-                <>
-                  <Separator className="my-2" />
-                  <div className="mt-2">
-                    <h4 className="text-sm font-medium">Attachments:</h4>
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {measure.attachments.map((file, index) => (
-                        <Badge key={index} variant="outline" className="gap-1">
-                          <FileText className="h-3 w-3" />
-                          {file.name}
-                          <span className="text-xs text-muted-foreground ml-1">({file.size})</span>
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              )}
-
-              {measure.status !== "Open" && (
-                <>
-                  <Separator className="my-2" />
-                  <div className="mt-2">
-                    <h4 className="text-sm font-medium">Customer Response:</h4>
-                    <p className="text-sm text-muted-foreground">
-                      {measure.status === "Completed"
-                        ? "We have completed the required safety training for all staff members. Attendance records and training materials are attached."
-                        : "We are currently in the process of installing the new emergency exit signs. Expected completion by April 18th."}
-                    </p>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
-  )
+            </CardContent>
+        </Card>
+    );
 }
-
