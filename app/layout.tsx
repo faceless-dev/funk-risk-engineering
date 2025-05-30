@@ -1,5 +1,4 @@
 import { ActionButtonsProvider } from '@/components/context/action-buttons-context';
-import { ThemeProvider } from '@/components/theme-provider';
 import { Inter } from 'next/font/google';
 import type React from 'react';
 import './globals.css';
@@ -14,11 +13,9 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html suppressHydrationWarning lang="en">
+        <html lang="en">
             <body className={inter.className}>
-                <ThemeProvider disableTransitionOnChange enableSystem attribute="class" defaultTheme="light">
-                    <ActionButtonsProvider>{children}</ActionButtonsProvider>
-                </ThemeProvider>
+                <ActionButtonsProvider>{children}</ActionButtonsProvider>
             </body>
         </html>
     );
