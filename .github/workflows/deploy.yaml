@@ -70,7 +70,12 @@ jobs:
         patch=${VERSION_PARTS[2]:-0}
         
         # Determine bump type from commit message
-        if [[ $commit_msg =~ ^feat(\(.+\))?!: ]] || [[ $commit_msg =~ BREAKING[[:space:]]CHANGE ]]; then
+        if [[ "$current_version" == "0.0.0" ]]; then
+          # Always bump minor for initial version
+          minor=1
+          patch=0
+          bump="minor"
+        elif [[ $commit_msg =~ ^feat(\(.+\))?!: ]] || [[ $commit_msg =~ BREAKING[[:space:]]CHANGE ]]; then
           # Major version bump (breaking change)
           major=$((major + 1))
           minor=0
