@@ -20,7 +20,7 @@ export function MeasuresTab({ measures }: MeasuresTabProps) {
                 </div>
                 <Button className="gap-2">
                     <Plus className="h-4 w-4" />
-                    Add Measure
+                    Maßnahme hinzufügen
                 </Button>
             </CardHeader>
             <CardContent>
@@ -92,7 +92,7 @@ export function MeasuresTab({ measures }: MeasuresTabProps) {
                                             <path d="M12 20h9" />
                                             <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
                                         </svg>
-                                        Edit
+                                        Bearbeiten
                                     </Button>
                                 </div>
                             </div>

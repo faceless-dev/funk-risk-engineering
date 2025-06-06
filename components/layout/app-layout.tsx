@@ -88,12 +88,11 @@ function Sidebar() {
     );
 }
 
-// TopBar component - only animated on initial load, not during navigation
 function TopBar() {
     const { actionButtons } = useActionButtons();
 
     return (
-        <header className="sticky top-0 z-50 flex h-16 items-center border-b bg-background w-full">
+        <header className="fixed top-0 z-50 flex h-16 items-center border-b bg-background w-full">
             <div className="flex items-center h-full w-64 px-6 border-r bg-muted/10">
                 <div className="flex items-center gap-2 font-semibold">
                     <Menu className="h-5 w-5 md:hidden cursor-pointer" />
@@ -152,7 +151,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="flex min-h-screen flex-col">
             <TopBar />
-            <div className="flex flex-1">
+            <div className="flex flex-1 mt-16">
                 <Sidebar />
                 {/* Only animate the main content area */}
                 <AnimatePresence mode="wait">

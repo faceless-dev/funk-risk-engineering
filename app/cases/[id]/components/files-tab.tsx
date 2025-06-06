@@ -26,7 +26,7 @@ export function FilesTab({ customerUploads, employeeUploads }: FilesTabProps) {
                 </div>
                 <Button className="gap-2">
                     <Upload className="h-4 w-4" />
-                    Upload File
+                    Datei hochladen
                 </Button>
             </CardHeader>
             <CardContent>

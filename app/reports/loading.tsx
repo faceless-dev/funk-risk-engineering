@@ -12,10 +12,10 @@ export default function Loading() {
             <Tabs className="w-full" defaultValue="cases">
                 <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger disabled value="cases">
-                        Case Reports
+                        Risikoberichte
                     </TabsTrigger>
                     <TabsTrigger disabled value="customers">
-                        Customer Reports
+                        Kundenberichte
                     </TabsTrigger>
                 </TabsList>
 
