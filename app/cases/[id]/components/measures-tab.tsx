@@ -15,12 +15,12 @@ export function MeasuresTab({ measures }: MeasuresTabProps) {
         <Card>
             <CardHeader className="flex flex-row items-center justify-between">
                 <div>
-                    <CardTitle>Measures</CardTitle>
-                    <CardDescription>List of all measures for this case</CardDescription>
+                    <CardTitle>Maßnahmen</CardTitle>
+                    <CardDescription>Liste aller Maßnahmen für diesen Bericht</CardDescription>
                 </div>
                 <Button className="gap-2">
                     <Plus className="h-4 w-4" />
-                    Add Measure
+                    Maßnahme hinzufügen
                 </Button>
             </CardHeader>
             <CardContent>
@@ -92,7 +92,7 @@ export function MeasuresTab({ measures }: MeasuresTabProps) {
                                             <path d="M12 20h9" />
                                             <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
                                         </svg>
-                                        Edit
+                                        Bearbeiten
                                     </Button>
                                 </div>
                             </div>
@@ -103,7 +103,7 @@ export function MeasuresTab({ measures }: MeasuresTabProps) {
                                 <>
                                     <Separator className="my-2" />
                                     <div className="mt-2">
-                                        <h4 className="text-sm font-medium">Attachments:</h4>
+                                        <h4 className="text-sm font-medium">Anhänge:</h4>
                                         <div className="mt-2 flex flex-wrap gap-2">
                                             {measure.attachments.map((file, index) => (
                                                 <Badge key={index} className="gap-1" variant="outline">
@@ -121,7 +121,7 @@ export function MeasuresTab({ measures }: MeasuresTabProps) {
                                 <>
                                     <Separator className="my-2" />
                                     <div className="mt-2">
-                                        <h4 className="text-sm font-medium">Customer Response:</h4>
+                                        <h4 className="text-sm font-medium">Antwort des Kunden:</h4>
                                         <p className="text-sm text-muted-foreground">
                                             {measure.status === 'Completed'
                                                 ? 'We have completed the required safety training for all staff members. Attendance records and training materials are attached.'

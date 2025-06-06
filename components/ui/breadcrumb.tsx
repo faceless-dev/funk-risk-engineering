@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import { Slot } from '@radix-ui/react-slot';
 import { ChevronRight, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
@@ -49,7 +50,7 @@ BreadcrumbSeparator.displayName = 'BreadcrumbSeparator';
 const BreadcrumbEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
     <span aria-hidden="true" className={cn('flex h-9 w-9 items-center justify-center', className)} role="presentation" {...props}>
         <MoreHorizontal className="h-4 w-4" />
-        <span className="sr-only">More</span>
+        <span className="sr-only">Mehr</span>
     </span>
 );
 BreadcrumbEllipsis.displayName = 'BreadcrumbElipssis';

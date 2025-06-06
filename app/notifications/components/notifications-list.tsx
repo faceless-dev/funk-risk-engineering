@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -181,7 +182,7 @@ function NotificationItem({ notification }: { notification: Notification }) {
             {!notification.read && (
                 <Button className="mt-1" size="sm" variant="ghost">
                     <Check className="h-4 w-4" />
-                    <span className="sr-only">Mark as read</span>
+                    <span className="sr-only">Als gelesen markieren</span>
                 </Button>
             )}
         </div>

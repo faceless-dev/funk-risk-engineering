@@ -12,7 +12,7 @@ export function PriorityDistributionChart({ measures }: PriorityDistributionChar
 
     return (
         <div>
-            <h2 className="text-2xl font-bold">Priority Distribution</h2>
+            <h2 className="text-2xl font-bold">Prioritätsverteilung</h2>
             <Card className="mt-4">
                 <CardContent className="p-6">
                     <div className="flex h-64 items-end justify-around gap-4">
@@ -23,7 +23,7 @@ export function PriorityDistributionChart({ measures }: PriorityDistributionChar
                                     height: `${(highPriority / measures.length) * 100 * 2}px`,
                                 }}
                             />
-                            <div className="mt-2 text-sm">High ({highPriority})</div>
+                            <div className="mt-2 text-sm">Hoch ({highPriority})</div>
                         </div>
                         <div className="flex w-1/3 flex-col items-center">
                             <div
@@ -32,7 +32,7 @@ export function PriorityDistributionChart({ measures }: PriorityDistributionChar
                                     height: `${(mediumPriority / measures.length) * 100 * 2}px`,
                                 }}
                             />
-                            <div className="mt-2 text-sm">Medium ({mediumPriority})</div>
+                            <div className="mt-2 text-sm">Mittel ({mediumPriority})</div>
                         </div>
                         <div className="flex w-1/3 flex-col items-center">
                             <div
@@ -41,7 +41,7 @@ export function PriorityDistributionChart({ measures }: PriorityDistributionChar
                                     height: `${(lowPriority / measures.length) * 100 * 2}px`,
                                 }}
                             />
-                            <div className="mt-2 text-sm">Low ({lowPriority})</div>
+                            <div className="mt-2 text-sm">Niedrig ({lowPriority})</div>
                         </div>
                     </div>
                 </CardContent>

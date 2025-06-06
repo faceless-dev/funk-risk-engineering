@@ -34,7 +34,7 @@ export function ActionRequiredCard({ cases }: ActionRequiredCardProps) {
                 <div className="flex items-center justify-between">
                     <div className="space-y-1.5">
                         <CardTitle className="text-lg">Handlungen notwendig</CardTitle>
-                        <CardDescription className="text-sm text-muted-foreground">Fälle, die sofortige Aufmerksamkeit erfordern</CardDescription>
+                        <CardDescription className="text-sm text-muted-foreground">Berichte, die sofortige Aufmerksamkeit erfordern</CardDescription>
                     </div>
                     <div className="flex items-center gap-2">
                         <Input className="w-[200px]" placeholder="Suchen..." />

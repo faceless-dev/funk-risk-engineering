@@ -9,12 +9,12 @@ interface CaseDetailsCardProps {
 export function CaseDetailsCard({ caseData }: CaseDetailsCardProps) {
     return (
         <div>
-            <h2 className="text-2xl font-bold">Case Details: {caseData.id}</h2>
+            <h2 className="text-2xl font-bold">Berichtdetails: {caseData.id}</h2>
             <Card className="mt-4">
                 <CardContent className="grid gap-4 p-6">
                     <div className="grid grid-cols-2 gap-4">
                         <div>
-                            <div className="text-sm font-medium">Case Name</div>
+                            <div className="text-sm font-medium">Name</div>
                             <div className="text-lg">{caseData.name}</div>
                         </div>
                         <div>
@@ -22,7 +22,7 @@ export function CaseDetailsCard({ caseData }: CaseDetailsCardProps) {
                             <div className="text-lg">{caseData.status}</div>
                         </div>
                         <div>
-                            <div className="text-sm font-medium">Customer</div>
+                            <div className="text-sm font-medium">Kunde</div>
                             <div className="text-lg">
                                 <Link
                                     className="hover:underline text-blue-600"
@@ -33,7 +33,7 @@ export function CaseDetailsCard({ caseData }: CaseDetailsCardProps) {
                             </div>
                         </div>
                         <div>
-                            <div className="text-sm font-medium">Location</div>
+                            <div className="text-sm font-medium">Standort</div>
                             <div className="text-lg">
                                 <Link
                                     className="hover:underline text-blue-600"
@@ -44,16 +44,16 @@ export function CaseDetailsCard({ caseData }: CaseDetailsCardProps) {
                             </div>
                         </div>
                         <div>
-                            <div className="text-sm font-medium">Created Date</div>
+                            <div className="text-sm font-medium">Erstellt am</div>
                             <div className="text-lg">{caseData.createdDate}</div>
                         </div>
                         <div>
-                            <div className="text-sm font-medium">Last Updated</div>
+                            <div className="text-sm font-medium">Zuletzt aktualisiert</div>
                             <div className="text-lg">{caseData.lastUpdated}</div>
                         </div>
                     </div>
                     <div>
-                        <div className="text-sm font-medium">Description</div>
+                        <div className="text-sm font-medium">Beschreibung</div>
                         <div className="text-lg">{caseData.description}</div>
                     </div>
                 </CardContent>

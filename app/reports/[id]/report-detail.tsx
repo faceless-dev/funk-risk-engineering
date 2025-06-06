@@ -39,15 +39,21 @@ export default function ReportDetail({ id }: ReportDetailProps) {
                 <ActionButton
                     icon={<ArrowLeft className="h-4 w-4 mr-2" />}
                     id="back-to-reports"
-                    label="Back to Reports"
+                    label="Zurück zu Berichten"
                     variant="ghost"
                     onClick={() => router.back()}
                 />
-                <ActionButton icon={<Printer className="h-4 w-4 mr-2" />} id="print" label="Print" variant="outline" onClick={() => window.print()} />
+                <ActionButton
+                    icon={<Printer className="h-4 w-4 mr-2" />}
+                    id="print"
+                    label="Drucken"
+                    variant="outline"
+                    onClick={() => window.print()}
+                />
                 <ActionButton
                     icon={<Download className="h-4 w-4 mr-2" />}
                     id="export-pdf"
-                    label="Export PDF"
+                    label="PDF exportieren"
                     variant="default"
                     onClick={() => alert('Exporting PDF...')}
                 />
@@ -87,8 +93,8 @@ export default function ReportDetail({ id }: ReportDetailProps) {
         return (
             <div className="flex min-h-screen items-center justify-center">
                 <div className="text-center">
-                    <div className="mb-4 text-3xl font-bold">Loading report...</div>
-                    <div className="text-muted-foreground">Please wait while we generate your report</div>
+                    <div className="mb-4 text-3xl font-bold">Bericht wird generiert...</div>
+                    <div className="text-muted-foreground">Bitte warten Sie, während wir Ihren Bericht generieren</div>
                 </div>
             </div>
         );

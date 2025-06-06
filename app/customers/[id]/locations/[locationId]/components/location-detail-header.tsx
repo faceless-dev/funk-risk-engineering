@@ -17,7 +17,7 @@ export function LocationDetailHeader({ location }: LocationDetailHeaderProps) {
     if (hasOverdueMeasures) {
         statusBadge = <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Überfällige Maßnahmen</Badge>;
     } else if (allCasesCompleted) {
-        statusBadge = <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Alle Fälle abgeschlossen</Badge>;
+        statusBadge = <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Alle Berichte abgeschlossen</Badge>;
     } else {
         statusBadge = <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">Aktiv</Badge>;
     }

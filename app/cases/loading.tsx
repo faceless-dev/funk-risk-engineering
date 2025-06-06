@@ -20,16 +20,16 @@ export default function Loading() {
             <Tabs className="w-full" defaultValue="all">
                 <TabsList className="grid w-full grid-cols-4 mb-4">
                     <TabsTrigger disabled value="all">
-                        All
+                        Alle
                     </TabsTrigger>
                     <TabsTrigger disabled value="open">
-                        Open
+                        Offen
                     </TabsTrigger>
                     <TabsTrigger disabled value="pending">
-                        In Progress
+                        In Arbeit
                     </TabsTrigger>
                     <TabsTrigger disabled value="completed">
-                        Completed
+                        Abgeschlossen
                     </TabsTrigger>
                 </TabsList>
 

@@ -21,7 +21,7 @@ export function CustomerStatistics({ statistics }: CustomerStatisticsProps) {
             <Card>
                 <CardContent className="p-4 text-center">
                     <div className="text-3xl font-bold text-blue-600">{statistics.cases}</div>
-                    <div className="text-sm text-muted-foreground">Fälle</div>
+                    <div className="text-sm text-muted-foreground">Berichte</div>
                 </CardContent>
             </Card>
             <Card>

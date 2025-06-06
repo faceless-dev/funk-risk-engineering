@@ -18,8 +18,8 @@ export function CaseReportsList({ reports }: CaseReportsListProps) {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Fallberichte</CardTitle>
-                <CardDescription>Berichte zu einzelnen Risikobewertungsfällen</CardDescription>
+                <CardTitle>Berichte</CardTitle>
+                <CardDescription>Berichte zu einzelnen Risikobewertungen</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">

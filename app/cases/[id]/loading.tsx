@@ -27,7 +27,7 @@ export default function CaseLoading() {
                 <CardHeader className="pb-2">
                     <CardTitle className="flex items-center gap-2">
                         <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
-                        Loading case details...
+                        Lade Berichtdetails...
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 grid grid-cols-2 gap-8">
@@ -69,13 +69,13 @@ export default function CaseLoading() {
             <Tabs className="w-full" defaultValue="measures">
                 <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger disabled value="measures">
-                        Measures
+                        Maßnahmen
                     </TabsTrigger>
                     <TabsTrigger disabled value="history">
-                        History
+                        Verlauf
                     </TabsTrigger>
                     <TabsTrigger disabled value="files">
-                        Files
+                        Dateien
                     </TabsTrigger>
                 </TabsList>
                 <div className="mt-4">

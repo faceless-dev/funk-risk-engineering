@@ -70,10 +70,10 @@ export default function CustomerLoading() {
                     <Tabs>
                         <TabsList className="grid w-full grid-cols-2">
                             <TabsTrigger disabled value="locations">
-                                Locations
+                                Standorte
                             </TabsTrigger>
                             <TabsTrigger disabled value="cases">
-                                Cases
+                                Berichte
                             </TabsTrigger>
                         </TabsList>
                     </Tabs>

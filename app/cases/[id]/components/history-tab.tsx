@@ -9,8 +9,8 @@ export function HistoryTab({ history }: HistoryTabProps) {
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Case History</CardTitle>
-                <CardDescription>Timeline of all actions and changes</CardDescription>
+                <CardTitle>Bearbeitungsverlauf</CardTitle>
+                <CardDescription>Zeitliche Abfolge aller Aktionen und Änderungen</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">

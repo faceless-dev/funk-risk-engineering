@@ -36,7 +36,7 @@ export default function CaseDetail({ id }: CaseDetailProps) {
                 href={`/reports/${caseData.id}`}
                 icon={<FileText className="h-4 w-4 mr-2" />}
                 id="generate-report"
-                label="Generate Report"
+                label="Bericht erstellen"
                 variant="outline"
             />
             <ActionButton
@@ -57,7 +57,7 @@ export default function CaseDetail({ id }: CaseDetailProps) {
                     </svg>
                 }
                 id="send-to-customer"
-                label="Send to Customer"
+                label="Für Kunde freigeben"
                 variant="default"
                 onClick={() => alert('Sending to customer...')}
             />
@@ -75,9 +75,9 @@ export default function CaseDetail({ id }: CaseDetailProps) {
                 {/* Tabs for measures, history, and files */}
                 <Tabs className="w-full" defaultValue="measures" onValueChange={setActiveTab}>
                     <TabsList className="grid w-full grid-cols-3">
-                        <TabsTrigger value="measures">Measures</TabsTrigger>
-                        <TabsTrigger value="history">History</TabsTrigger>
-                        <TabsTrigger value="files">Files</TabsTrigger>
+                        <TabsTrigger value="measures">Maßnahmen</TabsTrigger>
+                        <TabsTrigger value="history">Verlauf</TabsTrigger>
+                        <TabsTrigger value="files">Dateien</TabsTrigger>
                     </TabsList>
 
                     <TabsContent className="mt-4" value="measures">

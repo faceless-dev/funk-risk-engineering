@@ -9,15 +9,16 @@ interface MeasuresListCardProps {
 export function MeasuresListCard({ measures }: MeasuresListCardProps) {
     return (
         <div>
-            <h2 className="text-2xl font-bold">Measures List</h2>
+            <h2 className="text-2xl font-bold">Alle Maßnahmen</h2>
             <Card className="mt-4">
                 <CardContent className="p-0">
                     <div className="grid grid-cols-4 gap-4 border-b p-4 font-medium">
-                        <div>Measure</div>
-                        <div>Priority</div>
+                        <div>Maßnahme</div>
+                        <div>Priorität</div>
                         <div>Status</div>
-                        <div>Deadline</div>
+                        <div>Fälligkeit</div>
                     </div>
+
                     {measures.map((measure) => (
                         <div key={measure.id} className="grid grid-cols-4 gap-4 border-b p-4 last:border-0">
                             <div>

@@ -19,7 +19,7 @@ export function CaseHeader({ createdDate, id, name, status }: CaseHeaderProps) {
                         <Button asChild className="h-8 w-8 -ml-1 mr-1 mt-1" size="icon" variant="ghost">
                             <Link href="/dashboard">
                                 <ArrowLeft className="h-4 w-4" />
-                                <span className="sr-only">Back</span>
+                                <span className="sr-only">Zurück</span>
                             </Link>
                         </Button>
                         <div>
@@ -27,7 +27,7 @@ export function CaseHeader({ createdDate, id, name, status }: CaseHeaderProps) {
                                 <h1 className="text-2xl font-bold">{name}</h1>
                                 <Badge className="text-sm px-3 py-1 bg-blue-100 text-blue-800 hover:bg-blue-100 font-medium">{status}</Badge>
                             </div>
-                            <div className="text-sm text-muted-foreground">Fall #{id.split('-')[2]}</div>
+                            <div className="text-sm text-muted-foreground">Bericht #{id.split('-')[2]}</div>
                         </div>
                     </div>
                 </div>

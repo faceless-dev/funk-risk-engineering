@@ -20,14 +20,14 @@ export function CustomerHeader({ searchQuery, setSearchQuery, setViewMode, viewM
                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input
                         className="w-[250px] pl-8"
-                        placeholder="Kunden suchen..."
+                        placeholder="Suche nach Kunden..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </div>
                 <div className="flex items-center border rounded-md">
                     <Button
-                        aria-label="Grid view"
+                        aria-label="Kartenansicht"
                         className="h-9 w-9 rounded-none rounded-l-md"
                         size="icon"
                         variant={viewMode === 'grid' ? 'default' : 'ghost'}
@@ -36,7 +36,7 @@ export function CustomerHeader({ searchQuery, setSearchQuery, setViewMode, viewM
                         <Grid className="h-4 w-4" />
                     </Button>
                     <Button
-                        aria-label="List view"
+                        aria-label="Listenansicht"
                         className="h-9 w-9 rounded-none rounded-r-md"
                         size="icon"
                         variant={viewMode === 'list' ? 'default' : 'ghost'}

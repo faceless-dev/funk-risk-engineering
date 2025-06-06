@@ -14,8 +14,8 @@ export function LocationCasesTab({ cases, customerId, locationId }: LocationCase
     return (
         <Card>
             <CardHeader>
-                <CardTitle>Fälle</CardTitle>
-                <CardDescription>Alle Risikobewertungsfälle für diesen Standort</CardDescription>
+                <CardTitle>Berichte</CardTitle>
+                <CardDescription>Alle Berichte für diesen Standort</CardDescription>
             </CardHeader>
             <CardContent className="p-6">
                 <div className="space-y-6">
@@ -85,7 +85,7 @@ export function LocationCasesTab({ cases, customerId, locationId }: LocationCase
                             </div>
                         </div>
                     ))}
-                    {cases.length === 0 && <div className="text-center py-6 text-muted-foreground">Keine Fälle für diesen Standort gefunden</div>}
+                    {cases.length === 0 && <div className="text-center py-6 text-muted-foreground">Keine Berichte für diesen Standort gefunden</div>}
                 </div>
             </CardContent>
         </Card>

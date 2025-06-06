@@ -16,7 +16,7 @@ export function StatusDistributionChart({ measures }: StatusDistributionChartPro
 
     return (
         <div>
-            <h2 className="text-2xl font-bold">Status Distribution</h2>
+            <h2 className="text-2xl font-bold">Statusverteilung</h2>
             <Card className="mt-4">
                 <CardContent className="p-6">
                     <div className="flex h-64 items-center justify-center">
@@ -37,15 +37,15 @@ export function StatusDistributionChart({ measures }: StatusDistributionChartPro
                         <div className="ml-8 space-y-2">
                             <div className="flex items-center gap-2">
                                 <div className="h-3 w-3 rounded-full bg-blue-500" />
-                                <div className="text-sm">Open ({openMeasures})</div>
+                                <div className="text-sm">Offen ({openMeasures})</div>
                             </div>
                             <div className="flex items-center gap-2">
                                 <div className="h-3 w-3 rounded-full bg-purple-500" />
-                                <div className="text-sm">In Progress ({inProgressMeasures})</div>
+                                <div className="text-sm">In Bearbeitung ({inProgressMeasures})</div>
                             </div>
                             <div className="flex items-center gap-2">
                                 <div className="h-3 w-3 rounded-full bg-green-500" />
-                                <div className="text-sm">Completed ({completedMeasures})</div>
+                                <div className="text-sm">Abgeschlossen ({completedMeasures})</div>
                             </div>
                         </div>
                     </div>

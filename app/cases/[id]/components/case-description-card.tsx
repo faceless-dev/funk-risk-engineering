@@ -8,7 +8,7 @@ export function CaseDescriptionCard({ description }: CaseDescriptionCardProps) {
     return (
         <div className="rounded-lg border bg-card shadow-sm">
             <div className="p-4 border-b flex items-center justify-between">
-                <h2 className="text-lg font-medium">Fallbeschreibung</h2>
+                <h2 className="text-lg font-medium">Zusammenfassung</h2>
                 <Button className="gap-1" size="sm" variant="ghost">
                     <svg
                         className="h-4 w-4"

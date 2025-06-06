@@ -1,3 +1,4 @@
+/* eslint-disable react/no-multi-comp */
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
 import * as React from 'react';
 
@@ -40,16 +41,16 @@ const PaginationLink = ({ className, isActive, size = 'icon', ...props }: Pagina
 PaginationLink.displayName = 'PaginationLink';
 
 const PaginationPrevious = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-    <PaginationLink aria-label="Go to previous page" className={cn('gap-1 pl-2.5', className)} size="default" {...props}>
+    <PaginationLink aria-label="Zurück" className={cn('gap-1 pl-2.5', className)} size="default" {...props}>
         <ChevronLeft className="h-4 w-4" />
-        <span>Previous</span>
+        <span>Zurück</span>
     </PaginationLink>
 );
 PaginationPrevious.displayName = 'PaginationPrevious';
 
 const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-    <PaginationLink aria-label="Go to next page" className={cn('gap-1 pr-2.5', className)} size="default" {...props}>
-        <span>Next</span>
+    <PaginationLink aria-label="Nächste Seite" className={cn('gap-1 pr-2.5', className)} size="default" {...props}>
+        <span>Weiter</span>
         <ChevronRight className="h-4 w-4" />
     </PaginationLink>
 );
@@ -58,7 +59,7 @@ PaginationNext.displayName = 'PaginationNext';
 const PaginationEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
     <span aria-hidden className={cn('flex h-9 w-9 items-center justify-center', className)} {...props}>
         <MoreHorizontal className="h-4 w-4" />
-        <span className="sr-only">More pages</span>
+        <span className="sr-only">Mehr Seiten</span>
     </span>
 );
 PaginationEllipsis.displayName = 'PaginationEllipsis';

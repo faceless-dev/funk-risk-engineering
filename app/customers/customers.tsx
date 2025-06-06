@@ -30,7 +30,7 @@ export default function Customers() {
             <ActionButton
                 icon={<Plus className="h-4 w-4 mr-2" />}
                 id="new-customer"
-                label="New Customer"
+                label="Neuer Kunde"
                 variant="default"
                 onClick={() => alert('Creating new customer...')}
             />
