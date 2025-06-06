@@ -1,4 +1,4 @@
-export default {
+const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true,
     },
@@ -11,8 +11,11 @@ export default {
     images: {
         domains: ['images.unsplash.com'],
     },
+    output: 'standalone',
     reactStrictMode: true,
     typescript: {
         ignoreBuildErrors: true,
     },
 };
+
+export default nextConfig;
