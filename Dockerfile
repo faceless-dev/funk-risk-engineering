@@ -2,7 +2,7 @@
 FROM node:18-alpine AS base
 
 # Install pnpm globally
-RUN npm install -g pnpm
+RUN npm install -g pnpm@8.15.9
 
 # Dependencies stage - install only production dependencies
 FROM base AS deps
