@@ -10,7 +10,8 @@
         "lint": "next lint",
         "lint:fix": "next lint --fix",
         "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format:check": "prettier --check .",
+        "test:docker": "docker build -t funk-local ."
     },
     "dependencies": {
         "@emotion/is-prop-valid": "latest",
