@@ -31,14 +31,14 @@ export default function Cases() {
             <ActionButton
                 icon={<PlusSquare className="h-4 w-4 mr-2" />}
                 id="new-case"
-                label="New Case"
+                label="Neuer Bericht"
                 variant="default"
                 onClick={() => alert('Creating new case...')}
             />
 
             <div className="flex flex-col gap-6">
                 <div className="flex items-center justify-between">
-                    <h1 className="text-2xl font-bold">Fälle</h1>
+                    <h1 className="text-2xl font-bold">Berichte</h1>
                 </div>
 
                 <CaseFilters searchQuery={searchQuery} setSearchQuery={setSearchQuery} />

@@ -42,7 +42,7 @@ export default function LocationDetail({ customerId, locationId }: LocationDetai
             <ActionButton
                 icon={<Plus className="h-4 w-4 mr-2" />}
                 id="create-case"
-                label="Fall erstellen"
+                label="Bericht erstellen"
                 variant="default"
                 onClick={() => alert(`Creating new case for ${location.name}...`)}
             />
@@ -61,7 +61,7 @@ export default function LocationDetail({ customerId, locationId }: LocationDetai
 
                 <Tabs className="w-full" defaultValue="cases" value={activeTab} onValueChange={setActiveTab}>
                     <TabsList className="grid w-full grid-cols-3">
-                        <TabsTrigger value="cases">Fälle ({location.cases.length})</TabsTrigger>
+                        <TabsTrigger value="cases">Berichte ({location.cases.length})</TabsTrigger>
                         <TabsTrigger value="measures">Maßnahmen ({totalMeasures})</TabsTrigger>
                         <TabsTrigger value="info">Standortinformationen</TabsTrigger>
                     </TabsList>

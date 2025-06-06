@@ -79,7 +79,7 @@ export function CustomerGrid({ customers }: CustomerGridProps) {
                                         </svg>
                                         <span className="text-base font-bold">{customer.cases}</span>
                                     </div>
-                                    <span className="text-xs text-muted-foreground mt-0.5">Fälle</span>
+                                    <span className="text-xs text-muted-foreground mt-0.5">Berichte</span>
                                 </div>
                                 <div className="flex flex-col items-center justify-center py-3 text-center">
                                     <div className="flex items-center gap-1">

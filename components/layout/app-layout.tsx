@@ -1,6 +1,5 @@
+/* eslint-disable react/no-multi-comp */
 'use client';
-
-import type React from 'react';
 
 import { useActionButtons } from '@/components/context/action-buttons-context';
 import { Button } from '@/components/ui/button';
@@ -8,31 +7,22 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { BarChart3, BellIcon, Briefcase, LayoutDashboard, LogOut, Menu, Users } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 // Sidebar component - only animated on initial load, not during navigation
 function Sidebar() {
     const pathname = usePathname();
-    // Track if this is the initial render
-    const [isInitialRender, setIsInitialRender] = useState(true);
-
-    useEffect(() => {
-        // After first render, set isInitialRender to false
-        setIsInitialRender(false);
-    }, []);
 
     const navItems = [
         { href: '/dashboard', icon: <LayoutDashboard className="h-4 w-4" />, label: 'Dashboard' },
-        { href: '/cases', icon: <Briefcase className="h-4 w-4" />, label: 'Cases' },
-        { href: '/customers', icon: <Users className="h-4 w-4" />, label: 'Customers' },
+        { href: '/cases', icon: <Briefcase className="h-4 w-4" />, label: 'Berichte' },
+        { href: '/customers', icon: <Users className="h-4 w-4" />, label: 'Kunden' },
         { href: '/reports', icon: <BarChart3 className="h-4 w-4" />, label: 'Reports' },
-        { href: '/notifications', icon: <BellIcon className="h-4 w-4" />, label: 'Notifications' },
+        { href: '/notifications', icon: <BellIcon className="h-4 w-4" />, label: 'Benachrichtigungen' },
     ];
 
     return (
         <aside className="hidden w-64 border-r bg-muted/40 lg:block fixed top-16 left-0 bottom-0 overflow-y-auto">
             <div className="flex flex-col h-full">
-                {/* Top section - User profile */}
                 <div className="p-4">
                     <div className="flex items-center gap-3 mb-2">
                         <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold hover:scale-105 transition-transform duration-200">
@@ -45,10 +35,8 @@ function Sidebar() {
                     </div>
                 </div>
 
-                {/* Separator */}
                 <div className="h-px bg-border mx-4 my-2" />
 
-                {/* Navigation items - Middle section with flex-1 to take available space */}
                 <div className="flex-1 px-4 py-2">
                     <div className="space-y-1">
                         {navItems.map((item) => (
@@ -64,9 +52,7 @@ function Sidebar() {
                     </div>
                 </div>
 
-                {/* Bottom section with separator - Settings and Logout */}
                 <div className="mt-auto">
-                    {/* Separator */}
                     <div className="h-px bg-border mx-4 my-2" />
 
                     <div className="p-4 space-y-1">
@@ -85,14 +71,14 @@ function Sidebar() {
                                     <circle cx="12" cy="12" r="3" />
                                     <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.79a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.79a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.79a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82 1.65 1.65 0 0 0 1.51 1v.79a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.79a1.65 1.65 0 0 0-1.51 1z" />
                                 </svg>
-                                <span>Settings</span>
+                                <span>Einstellungen</span>
                             </Link>
                         </Button>
 
                         <Button asChild className="w-full justify-start gap-2 text-muted-foreground" variant="ghost">
                             <Link href="/">
                                 <LogOut className="h-4 w-4" />
-                                <span>Logout</span>
+                                <span>Abmelden</span>
                             </Link>
                         </Button>
                     </div>
@@ -105,17 +91,9 @@ function Sidebar() {
 // TopBar component - only animated on initial load, not during navigation
 function TopBar() {
     const { actionButtons } = useActionButtons();
-    // Track if this is the initial render
-    const [isInitialRender, setIsInitialRender] = useState(true);
-
-    useEffect(() => {
-        // After first render, set isInitialRender to false
-        setIsInitialRender(false);
-    }, []);
 
     return (
         <header className="sticky top-0 z-50 flex h-16 items-center border-b bg-background w-full">
-            {/* Logo section - Fixed width matching sidebar */}
             <div className="flex items-center h-full w-64 px-6 border-r bg-muted/10">
                 <div className="flex items-center gap-2 font-semibold">
                     <Menu className="h-5 w-5 md:hidden cursor-pointer" />
@@ -132,7 +110,7 @@ function TopBar() {
                         <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z" />
                         <path d="m9 12 2 2 4-4" />
                     </svg>
-                    <span>FUNK Risk Engineering</span>
+                    <span>FRET</span>
                 </div>
             </div>
 
@@ -160,7 +138,7 @@ function TopBar() {
                             ))}
                         </div>
                     ) : (
-                        <span className="hidden">No action buttons</span>
+                        <span className="hidden">Keine Aktionen</span>
                     )}
                 </AnimatePresence>
             </div>

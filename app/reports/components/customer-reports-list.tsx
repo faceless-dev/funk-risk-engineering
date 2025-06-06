@@ -19,7 +19,7 @@ export function CustomerReportsList({ reports }: CustomerReportsListProps) {
         <Card>
             <CardHeader>
                 <CardTitle>Kundenberichte</CardTitle>
-                <CardDescription>Berichte zu Kunden und deren Risikobewertungen</CardDescription>
+                <CardDescription>Berichte zu einzelnen Kunden</CardDescription>
             </CardHeader>
             <CardContent>
                 <div className="space-y-4">

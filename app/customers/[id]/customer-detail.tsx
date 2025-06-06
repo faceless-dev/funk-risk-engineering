@@ -25,7 +25,7 @@ export default function CustomerDetail({ id }: CustomerDetailProps) {
             <ActionButton
                 icon={<Plus className="h-4 w-4 mr-2" />}
                 id="create-case"
-                label="Fall erstellen"
+                label="Bericht erstellen"
                 variant="default"
                 onClick={() => alert('Creating new case...')}
             />
@@ -38,7 +38,7 @@ export default function CustomerDetail({ id }: CustomerDetailProps) {
                 <Tabs className="w-full" defaultValue="locations">
                     <TabsList className="grid w-full grid-cols-2">
                         <TabsTrigger value="locations">Standorte ({customer.locations.length})</TabsTrigger>
-                        <TabsTrigger value="cases">Fälle ({customer.cases.length})</TabsTrigger>
+                        <TabsTrigger value="cases">Berichte ({customer.cases.length})</TabsTrigger>
                     </TabsList>
 
                     <TabsContent className="mt-4" value="locations">

@@ -25,7 +25,7 @@ export function CustomerList({ customers }: CustomerListProps) {
                 <div className="col-span-3">Kunde</div>
                 <div className="col-span-3">Kontakt</div>
                 <div className="col-span-1 text-center">Standorte</div>
-                <div className="col-span-1 text-center">Fälle</div>
+                <div className="col-span-1 text-center">Berichte</div>
                 <div className="col-span-1 text-center">Offen</div>
                 <div className="col-span-3 text-right">Aktionen</div>
             </div>

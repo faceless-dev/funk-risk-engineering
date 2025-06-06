@@ -11,24 +11,24 @@ export function MeasuresSummaryCard({ measures }: MeasuresSummaryCardProps) {
 
     return (
         <div>
-            <h2 className="text-2xl font-bold">Measures Summary</h2>
+            <h2 className="text-2xl font-bold">Maßnahmenübersicht</h2>
             <div className="mt-4 grid grid-cols-3 gap-4">
                 <Card>
                     <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold">{measures.length}</div>
-                        <div className="text-sm text-muted-foreground">Total Measures</div>
+                        <div className="text-sm text-muted-foreground">Gesamt</div>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold">{completedMeasures}</div>
-                        <div className="text-sm text-muted-foreground">Completed Measures</div>
+                        <div className="text-sm text-muted-foreground">Abgeschlossen</div>
                     </CardContent>
                 </Card>
                 <Card>
                     <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold">{completionRate}%</div>
-                        <div className="text-sm text-muted-foreground">Completion Rate</div>
+                        <div className="text-sm text-muted-foreground">Umsetzungsrate</div>
                     </CardContent>
                 </Card>
             </div>
