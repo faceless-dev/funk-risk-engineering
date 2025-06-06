@@ -1,39 +1,118 @@
-name: Deploy to Coolify
+name: Build and Deploy
 
 on:
   push:
-    branches: [ main ]
+    branches: [ prod, stage, dev ]
+  pull_request:
+    branches: [ prod, stage, dev ]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build-and-deploy:
+  # Validate PR titles follow semantic conventions
+  validate-pr:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v3
+    - name: Validate PR Title
+      uses: amannn/action-semantic-pull-request@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        version: latest
+        types: |
+          feat
+          fix
+        requireScope: false
+        disallowScopes: []
+        subjectPattern: ^(?![A-Z]).+$
+        subjectPatternError: |
+          The subject "{subject}" found in the pull request title "{title}"
+          didn't match the configured pattern. Please ensure that the subject
+          doesn't start with an uppercase character.
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
+  # Calculate version based on PR title or commit history
+  version:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      bump: ${{ steps.version.outputs.bump }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
       with:
-        node-version: '18'
-        cache: 'pnpm'
+        fetch-depth: 0
 
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
+    - name: Get latest tag
+      id: latest_tag
+      run: |
+        latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+        echo "tag=$latest_tag" >> $GITHUB_OUTPUT
+        echo "Latest tag: $latest_tag"
 
-    - name: Build application
-      run: pnpm build
+    - name: Determine version bump
+      id: version
+      run: |
+        # Get the merge commit message (contains PR title)
+        commit_msg=$(git log -1 --pretty=%B)
+        echo "Commit message: $commit_msg"
+        
+        # Extract current version numbers
+        current_version="${{ steps.latest_tag.outputs.tag }}"
+        current_version=${current_version#v} # Remove 'v' prefix
+        
+        # Parse version components
+        IFS='.' read -ra VERSION_PARTS <<< "$current_version"
+        major=${VERSION_PARTS[0]:-0}
+        minor=${VERSION_PARTS[1]:-0}
+        patch=${VERSION_PARTS[2]:-0}
+        
+        # Determine bump type from commit message
+        if [[ $commit_msg =~ ^feat(\(.+\))?!: ]] || [[ $commit_msg =~ BREAKING[[:space:]]CHANGE ]]; then
+          # Major version bump (breaking change)
+          major=$((major + 1))
+          minor=0
+          patch=0
+          bump="major"
+        elif [[ $commit_msg =~ ^feat(\(.+\))?: ]]; then
+          # Minor version bump (new feature)
+          minor=$((minor + 1))
+          patch=0
+          bump="minor"
+        elif [[ $commit_msg =~ ^fix(\(.+\))?: ]]; then
+          # Patch version bump (bug fix)
+          patch=$((patch + 1))
+          bump="patch"
+        else
+          # No version bump for other commits
+          bump="none"
+        fi
+        
+        new_version="$major.$minor.$patch"
+        echo "version=$new_version" >> $GITHUB_OUTPUT
+        echo "bump=$bump" >> $GITHUB_OUTPUT
+        echo "New version: $new_version (bump: $bump)"
+
+  # Build and push Docker image
+  build:
+    runs-on: ubuntu-latest
+    needs: version
+    if: github.event_name == 'push' && needs.version.outputs.bump != 'none'
+    permissions:
+      contents: write  # For creating tags
+      packages: write
+    outputs:
+      version: ${{ needs.version.outputs.version }}
+      image-tag: ${{ steps.meta.outputs.tags }}
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Docker Buildx
+      uses: docker/setup-buildx-action@v3
 
     - name: Login to GHCR
       uses: docker/login-action@v3
@@ -42,22 +121,102 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Extract metadata
+      id: meta
+      uses: docker/metadata-action@v5
+      with:
+        images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        tags: |
+          # Semantic version
+          type=raw,value=v${{ needs.version.outputs.version }}
+          type=raw,value=${{ needs.version.outputs.version }}
+          
+          # Environment-specific tags
+          type=raw,value=latest,enable={{is_default_branch}}
+          type=raw,value=prod,enable={{is_default_branch}}
+          type=raw,value=stage,enable=${{ github.ref == 'refs/heads/stage' }}
+          type=raw,value=dev,enable=${{ github.ref == 'refs/heads/dev' }}
+          
+          # SHA for precise tracking
+          type=sha,prefix={{branch}}-
+
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
         context: .
+        platforms: linux/amd64,linux/arm64
         push: true
-        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-        file: |
-          FROM node:18-alpine
-          WORKDIR /app
-          COPY .next/standalone ./
-          COPY .next/static ./.next/static
-          COPY public ./public
-          EXPOSE 3000
-          CMD ["node", "server.js"]
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: |
+          ${{ steps.meta.outputs.labels }}
+          org.opencontainers.image.version=${{ needs.version.outputs.version }}
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
 
-    - name: Trigger Coolify
+    - name: Create and push git tag
       run: |
-        curl -X GET "${{ secrets.COOLIFY_WEBHOOK }}" \
-             -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git tag v${{ needs.version.outputs.version }}
+        git push origin v${{ needs.version.outputs.version }}
+
+  # Deploy to Development
+  deploy-dev:
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/dev' && needs.version.outputs.bump != 'none'
+    environment: dev
+    
+    steps:
+    - name: Deploy to Development
+      run: |
+        echo "🚀 Deploying v${{ needs.build.outputs.version }} to Development"
+        curl -X GET "${{ secrets.COOLIFY_WEBHOOK_DEV }}" \
+             -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+             --fail || (echo "❌ Development Deployment failed" && exit 1)
+
+  # Deploy to Staging
+  deploy-stage:
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/stage' && needs.version.outputs.bump != 'none'
+    environment: stage
+    
+    steps:
+    - name: Deploy to Staging
+      run: |
+        echo "🚀 Deploying v${{ needs.build.outputs.version }} to Staging"
+        curl -X GET "${{ secrets.COOLIFY_WEBHOOK_STAGE }}" \
+             -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+             --fail || (echo "❌ Staging Deployment failed" && exit 1)
+
+  # Deploy to Production
+  deploy-prod:
+    needs: [version, build]
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && needs.version.outputs.bump != 'none'
+    environment: prod
+    
+    steps:
+    - name: Deploy to Production
+      run: |
+        echo "🚀 Deploying v${{ needs.build.outputs.version }} to Production"
+        curl -X GET "${{ secrets.COOLIFY_WEBHOOK_PROD }}" \
+             -H "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}" \
+             --fail || (echo "❌ Production Deployment failed" && exit 1)
+
+  # Notify deployment results
+  notify:
+    needs: [version, build, deploy-dev, deploy-stage, deploy-prod]
+    runs-on: ubuntu-latest
+    if: always() && needs.version.outputs.bump != 'none'
+    
+    steps:
+    - name: Deployment Summary
+      run: |
+        echo "📦 **Deployment Summary**"
+        echo "Version: v${{ needs.build.outputs.version }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Bump Type: ${{ needs.version.outputs.bump }}"
+        echo "Commit: ${{ github.sha }}"
+        echo "Image Tags: ${{ needs.build.outputs.image-tag }}"
